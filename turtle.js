@@ -21,7 +21,7 @@ color("#ff0000")
 
 
 const form = document.getElementById('form')
-const button = document.getElementById('calculate')
+
 
 function neg_test(number){
     if (number >= 0){
@@ -38,9 +38,7 @@ function degreesToRadians(degrees){
     return radians
 }
 
-button.addEventListener('click', (event) =>{
-
-    event.preventDefault();
+document.addEventListener('submit', (event) =>{
 
     const GRAVITY = 9.81   
     const ANGLE = document.getElementById('angle').value

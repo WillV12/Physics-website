@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physics</title>
+    <link type="text/css" rel="stylesheet" href="lib\turtle.css" />
 </head>
 <body>
     <h1>Physics calculator</h1>
-    <form>
         <label for="X">X Value:</label>
         <input type="number" id="X" value="0" max="5000">
         
@@ -21,13 +21,16 @@
         <input type="number" id="height" value="0" max="5000">
         <br>
         <br>
-        <button type="submit" id="calculate">Submit</button>
+        <input type="button" id="calculate" value="Calculate">
         <hr>
         <br>
 
         <canvas id="turtlecanvas" width="700" height="700"></canvas>
+        <canvas id="imagecanvas" width="700" height="700" style="display:none"></canvas>
+        <span id="coords"></span>
+        <script type="text/javascript" src="lib/library.js"></script>
+        <script type="script/javascript" src="physics.js" defer></script>
 
-    </form>
     
 </body>
 </html>
