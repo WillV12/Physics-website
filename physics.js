@@ -38,13 +38,13 @@ function degreesToRadians(degrees){
     return radians
 }
 
-document.addEventListener('click', (event) =>{
+document.addEventListener('submit', (event) =>{
 
     event.preventDefault();
 
     const GRAVITY = 9.81   
-    const ANGLE = 25
-    const HEIGHT = 0
+    const ANGLE = document.getElementById('angle').value
+    const HEIGHT = document.getElementById('height').value
 
     let posistionListX = [] //plx
     let posistionListY = [] //ply
@@ -56,8 +56,8 @@ document.addEventListener('click', (event) =>{
     let vectorListY = [] //vxy
     let time = []
 
-    let X = 100
-    let Y = 100
+    let X = document.getElementById('X').value
+    let Y = document.getElementById('Y').value
 
     let dt = 0 
     let pos_x
@@ -65,7 +65,7 @@ document.addEventListener('click', (event) =>{
     let vectorX = X * Math.cos(degreesToRadians(ANGLE)) //vx 
     let vectorY = Y * Math.cos(degreesToRadians(ANGLE)) //vy
 
-    for (let i = 0; i < 10000; i++){
+    for (let i = 0; i < 1000; i++){
         time.push(dt)
 
         ix = X + vectorX * dt
@@ -81,10 +81,10 @@ document.addEventListener('click', (event) =>{
         posistionY.push(pos_y/20)
         dt += 0.0001
     }
-    setSpeed(200)
-    showGrid(20);
+
+    setSpeed(50)
     penup();
-    goto(-628, -304 + HEIGHT);
+    goto(-250, -250);
     pendown();
 
     let end = ''
@@ -103,35 +103,31 @@ document.addEventListener('click', (event) =>{
             left(90)
         }
 
-        if (ycor() <= -304 && index > 5){
-            end = index
-            break
-        }
+       
     }
 
     for (let index = 0; index < posistionX.length; index++){
         let value = posistionX[index] *20
         posistionListX.push(value)
     }
-
     for (let index = 0; index < posistionListY.length; index++){
         if (neg_test(posistionY[index]) == true){
-            value = (posistionY[index] * -1) * 20 
+            let value = (posistionY[index] * -1) * 20 
             posistionListY.push(value)       
         } else{
-            value = (posistionY[index]) * 20
+            let value = (posistionY[index]) * 20
             posistionListY.push(value)
         }
         
     }
 
-    let vector_y
+    let vector_y = []
     for (let index = 0; index < vectorListY.length; index++){
         if (neg_test(vectorListY[index]) == true){
-            value = vectorListY[index] * -1
+            let value = vectorListY[index] * -1
             vector_y.push(value)
         } else{
-            value = vectorListY[index]
+            let value = vectorListY[index]
             vector_y.push(value)
         }
     }
