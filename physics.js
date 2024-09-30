@@ -38,13 +38,13 @@ function degreesToRadians(degrees){
     return radians
 }
 
-button.addEventListener('click', (event) =>{
+document.addEventListener('click', (event) =>{
 
     event.preventDefault();
 
     const GRAVITY = 9.81   
-    const ANGLE = document.getElementById('angle').value
-    const HEIGHT = document.getElementById('height').value
+    const ANGLE = 25
+    const HEIGHT = 0
 
     let posistionListX = [] //plx
     let posistionListY = [] //ply
@@ -56,8 +56,8 @@ button.addEventListener('click', (event) =>{
     let vectorListY = [] //vxy
     let time = []
 
-    let X = document.getElementById('X').value
-    let Y = document.getElementById('Y').value
+    let X = 100
+    let Y = 100
 
     let dt = 0 
     let pos_x
