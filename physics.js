@@ -77,32 +77,29 @@ document.addEventListener('submit', (event) =>{
         pos_x = ix * dt
         pos_y = iy * dt
 
-        posistionX.push(pos_x/20)
-        posistionY.push(pos_y/20)
+        posistionX.push(pos_x)
+        posistionY.push(pos_y)
         dt += 0.0001
     }
 
-    setSpeed(50)
-    penup();
-    goto(-250, -250);
-    pendown();
-
-    let end = ''
+    setSpeed(1)
+    //goto(-250, -250);
+    let value
     for (let index = 0; index < posistionX.length; index++){
+        right(90)
         forward(posistionX[index])
-
+        left(90)
         if (neg_test(posistionY[index]) == false){
-            left(90)
-            forward(posistionListY[index])
-            right(90)
+            forward(posistionY[index])
         } else {
-            let value = parseFloat(posistionY[index])
+            value = posistionY[index]
+            console.log(value)
             value *= -1
-            right(90)
+            right(180)
             forward(value)
-            left(90)
+            left(180)
         }
-
+        
        
     }
 
