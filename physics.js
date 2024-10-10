@@ -43,8 +43,8 @@ document.addEventListener('submit', (event) =>{
     event.preventDefault();
 
     const GRAVITY = 9.81   
-    const ANGLE = document.getElementById('angle').value
-    const HEIGHT = document.getElementById('height').value
+    const ANGLE = parseInt(document.getElementById('angle').value)
+    const HEIGHT = parseInt(document.getElementById('height').value)
 
     let posistionListX = [] //plx
     let posistionListY = [] //ply
@@ -56,8 +56,8 @@ document.addEventListener('submit', (event) =>{
     let vectorListY = [] //vxy
     let time = []
 
-    let X = document.getElementById('X').value
-    let Y = document.getElementById('Y').value
+    let X = parseInt(document.getElementById('X').value)
+    let Y = parseInt(document.getElementById('Y').value)
 
     let dt = 0 
     let pos_x
@@ -65,25 +65,27 @@ document.addEventListener('submit', (event) =>{
     let vectorX = X * Math.cos(degreesToRadians(ANGLE)) //vx 
     let vectorY = Y * Math.cos(degreesToRadians(ANGLE)) //vy
 
-    for (let i = 0; i < 1000; i++){
+    for (let i = 0; i < 10000; i++){
         time.push(dt)
 
         ix = X + vectorX * dt
         iy = Y + vectorY * dt
+        console.log(iy)
         vectorListX.push(ix)
         vectorListY.push(iy)
 
-        vectorY = vectorY - 0.5 * GRAVITY * dt
-        pos_x = ix * dt
+        vectorY = vectorY -0.5 * GRAVITY * dt
+        pos_x = ix * dt 
         pos_y = iy * dt
 
-        posistionX.push(pos_x)
-        posistionY.push(pos_y)
+        posistionX.push(pos_x/10)
+        posistionY.push(pos_y/10)
         dt += 0.0001
     }
 
-    setSpeed(1)
-    //goto(-250, -250);
+    setSpeed(10)
+    goto(-250, -250 + HEIGHT);
+
     let value
     for (let index = 0; index < posistionX.length; index++){
         right(90)
@@ -93,7 +95,6 @@ document.addEventListener('submit', (event) =>{
             forward(posistionY[index])
         } else {
             value = posistionY[index]
-            console.log(value)
             value *= -1
             right(180)
             forward(value)
@@ -102,7 +103,6 @@ document.addEventListener('submit', (event) =>{
         
        
     }
-
     for (let index = 0; index < posistionX.length; index++){
         let value = posistionX[index] *20
         posistionListX.push(value)
