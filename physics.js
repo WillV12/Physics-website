@@ -33,6 +33,12 @@ function neg_test(number){
 }
 
 
+function user_input(string){
+    user_input = prompt(string)
+    return user_input
+}
+
+
 function degreesToRadians(degrees){
     let radians = degrees * (Math.PI / 180)
     return radians
@@ -59,6 +65,7 @@ document.addEventListener('submit', (event) =>{
     let X = parseInt(document.getElementById('X').value)
     let Y = parseInt(document.getElementById('Y').value)
 
+    let value
     let dt = 0 
     let pos_x
     let pos_y
@@ -85,23 +92,36 @@ document.addEventListener('submit', (event) =>{
     setSpeed(10)
     goto(-250, -250 + HEIGHT);
 
-    let value
-    for (let index = 0; index < posistionX.length; index++){
-        right(90)
-        forward(posistionX[index])
-        left(90)
-        if (neg_test(posistionY[index]) == false){
-            forward(posistionY[index])
-        } else {
-            value = posistionY[index]
-            value *= -1
-            right(180)
-            forward(value)
-            left(180)
-            
+    
+    
+    let iterations = 0
+ 
+        for (let index = 0; index < posistionX.length; index++){
+            right(90)
+            forward(posistionX[index])
+            left(90)
+            if (neg_test(posistionY[index]) == false){
+                forward(posistionY[index])
+            } 
+            else {
+                value = posistionY[index]
+                value *= -1
+                right(180)
+                forward(value)
+                left(180)
+            }
+
+            if (iterations % 1000 == 0 && iterations > 0){
+                user_input = user_input()
+                if (user_input == null){
+                    alert("The simulation has ended")
+                    break
+                }
+            }
+            iterations++
         }
-       
-    }
+
+
     for (let index = 0; index < posistionX.length; index++){
         let value = posistionX[index] *20
         posistionListX.push(value)
