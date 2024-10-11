@@ -70,7 +70,6 @@ document.addEventListener('submit', (event) =>{
 
         ix = X + vectorX * dt
         iy = Y + vectorY * dt
-        console.log(iy)
         vectorListX.push(ix)
         vectorListY.push(iy)
 
@@ -99,8 +98,8 @@ document.addEventListener('submit', (event) =>{
             right(180)
             forward(value)
             left(180)
+            
         }
-        
        
     }
     for (let index = 0; index < posistionX.length; index++){
