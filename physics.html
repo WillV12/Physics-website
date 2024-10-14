@@ -2,6 +2,7 @@
 <html>
    <head>
       <title>2-D Physics Simulator</title>
+      <!--Window-->
       <link type="text/css" rel="stylesheet" href="lib/turtle.css" />
       <meta charset="utf-8">
    </head>
@@ -9,12 +10,14 @@
       <div id="wrap">
          <h1>2-D Projectile Motion Simulator</h1>
          <div id="midcolumn">
+            <!--Turtle window-->
             <h4>Canvas <span id="coords"></span></h4>
-            <canvas id="turtlecanvas" width="500" height="500"></canvas>
-            <canvas id="imagecanvas" width="500" height="500" style="display:none"></canvas>
+            <canvas id="turtlecanvas" width="800" height="500"></canvas>
+            <canvas id="imagecanvas" width="800" height="500" style="display:none"></canvas>
             <span id="message" class="message-hide">Coordinates has been copied to clipboard</span>
          </div> <!-- midcolumn -->
         <div id="rightcolumn">
+         <!--Form for inputs and calculation request-->
          <form>
             <label for="X">X Value:</label>
             <input type="number" id="X" value="0" max="5000">
@@ -36,6 +39,7 @@
          </form> 
         </div>
       </div> <!-- wrap-->
+      <!--Imports of Javascript files and libraries-->
       <script type="text/javascript" src="lib/library.js"></script>
       <script type="text/javascript" src="physics.js"></script>
       <script type="text/javascript" src="misc.js"></script>

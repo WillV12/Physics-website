@@ -20,9 +20,12 @@ color("#ff0000")
 */
 
 
-const form = document.getElementById('form')
-const button = document.getElementById('calculate')
+/* File for physics calculation, drawing, and graphing*/
 
+const form = document.getElementById('form') // form for inputting the X, Y, HEIGHT, & ANGLE components
+const button = document.getElementById('calculate') // button for calculation
+
+/* This function will check if a number is negative and return true or false */
 function neg_test(number){
     if (number >= 0){
         return false
@@ -32,39 +35,38 @@ function neg_test(number){
     }
 }
 
-
-function input(string){
-    user_input = prompt(string)
-    return user_input
-}
-
-
+/* This function converts degrees to radians and returns that value */
 function degreesToRadians(degrees){
     let radians = degrees * (Math.PI / 180)
     return radians
 }
 
+/* Will check for a submission on the page, and will begin the simulation once it is detected */
 document.addEventListener('submit', (event) =>{
 
-    event.preventDefault();
 
-    const GRAVITY = 9.81   
+    event.preventDefault(); // Stops the page from reloading once submission is detected
+
+
+    const GRAVITY = 9.81 
     const ANGLE = parseInt(document.getElementById('angle').value)
     const HEIGHT = parseInt(document.getElementById('height').value)
 
-    let posistionListX = [] //plx
-    let posistionListY = [] //ply
+    let posistionListX = [] //plx, normalized X delta posistion values for graphing
+    let posistionListY = [] //ply, normalized Y delta posistion values for graphing
 
-    let posistionX = [] //px
-    let posistionY = [] //py
+    let posistionX = [] //px, This where the calculated delta X posistions are places
+    let posistionY = [] //py, This where the calculated delta Y posistions are places
 
-    let vectorListX = [] //vxl
-    let vectorListY = [] //vxy
+    let vectorListX = [] //vxl, normalized X force vectors for graphing
+    let vectorListY = [] //vxy, normalized Y force vectors for graphing
     let time = []
 
+    /* Initial X and Y vectors */
     let X = parseInt(document.getElementById('X').value)
     let Y = parseInt(document.getElementById('Y').value)
 
+    /*Initializes variables*/
     let value
     let dt = 0 
     let pos_x
@@ -73,6 +75,9 @@ document.addEventListener('submit', (event) =>{
     let vectorY = Y * Math.cos(degreesToRadians(ANGLE)) //vy
     let end = 0
 
+    /*calculates force and posistional vectors and appends the to their respective lists. 
+    Iterates the y vector to account for gravity and adds dt (delta time) each iteration.
+    This process is repeated 10000 times. */
     for (let i = 0; i < 10000; i++){
         time.push(dt)
 
@@ -97,11 +102,12 @@ document.addEventListener('submit', (event) =>{
               }
     }
 
-
+    /*Before drawing, the program will set the speed to one and move to the corner of the window
+    plus whatever the HEIGHT input is */
     setSpeed(1)
-    goto(-250, -250 + HEIGHT);
+    goto(-400, -250 + HEIGHT);
 
-    
+        /*I'm holding off on commenting this part until I complete the graph code*/
         for (let index = 0; index < end; index++){
             right(90)
             forward(posistionX[index])
