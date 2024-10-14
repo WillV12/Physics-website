@@ -33,7 +33,7 @@ function neg_test(number){
 }
 
 
-function user_input(string){
+function input(string){
     user_input = prompt(string)
     return user_input
 }
@@ -71,6 +71,7 @@ document.addEventListener('submit', (event) =>{
     let pos_y
     let vectorX = X * Math.cos(degreesToRadians(ANGLE)) //vx 
     let vectorY = Y * Math.cos(degreesToRadians(ANGLE)) //vy
+    let end = 0
 
     for (let i = 0; i < 10000; i++){
         time.push(dt)
@@ -87,16 +88,21 @@ document.addEventListener('submit', (event) =>{
         posistionX.push(pos_x/10)
         posistionY.push(pos_y/10)
         dt += 0.0001
+
+            var sum = posistionY.reduce((accumulator, currentValue) => {
+                return accumulator + currentValue
+              },0);
+              if (sum < (0-HEIGHT) && end == 0){
+                end = i
+              }
     }
 
-    setSpeed(10)
+
+    setSpeed(1)
     goto(-250, -250 + HEIGHT);
 
     
-    
-    let iterations = 0
- 
-        for (let index = 0; index < posistionX.length; index++){
+        for (let index = 0; index < end; index++){
             right(90)
             forward(posistionX[index])
             left(90)
@@ -110,23 +116,20 @@ document.addEventListener('submit', (event) =>{
                 forward(value)
                 left(180)
             }
-
-            if (iterations % 1000 == 0 && iterations > 0){
-                user_input = user_input()
-                if (user_input == null){
-                    alert("The simulation has ended")
-                    break
-                }
-            }
-            iterations++
+             
+            
         }
 
 
-    for (let index = 0; index < posistionX.length; index++){
+            
+        
+
+
+    for (let index = 0; index < end; index++){
         let value = posistionX[index] *20
         posistionListX.push(value)
     }
-    for (let index = 0; index < posistionListY.length; index++){
+    for (let index = 0; index < end; index++){
         if (neg_test(posistionY[index]) == true){
             let value = (posistionY[index] * -1) * 20 
             posistionListY.push(value)       
