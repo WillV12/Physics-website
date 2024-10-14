@@ -1,34 +1,23 @@
 /// <reference path="./lib/Intellisense/js-turtle_hy.ts" />
 //DOCUMENTATION: https://hanumanum.github.io/js-turtle/
-/*
-showGrid(20);      
-forward(distance)  
-right(angle)       
-left(angle) 	   
-goto(x,y) 	       
-clear() 	       
-penup() 	       
-pendown() 	       
-reset() 	       
-angle(angle)	   
-width(width)       
 
-color(r,g,b)
-color([r,g,b])
-color("red")
-color("#ff0000")
-*/
 
 
 const reset = document.getElementById('reset')
-
+const colorButton = document.getElementById('colorButton')
 
 reset.addEventListener('click', (event) =>{
 
     clear()
+    color('#000000')
     alert('Window was reset')
 
 
 });
 
+colorButton.addEventListener('click', (event) =>{
+    colors = document.getElementById('color_selector').value
+    color(colors)
+    alert("Color has been set to "+ colors )
+})
 

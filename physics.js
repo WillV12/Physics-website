@@ -1,23 +1,5 @@
 /// <reference path="./lib/Intellisense/js-turtle_hy.ts" />
-//DOCUMENTATION: https://hanumanum.github.io/js-turtle/
-/*
-showGrid(20);      
-forward(distance)  
-right(angle)       
-left(angle) 	   
-goto(x,y) 	       
-clear() 	       
-penup() 	       
-pendown() 	       
-reset() 	       
-angle(angle)	   
-width(width)       
 
-color(r,g,b)
-color([r,g,b])
-color("red")
-color("#ff0000")
-*/
 
 
 /* File for physics calculation, drawing, and graphing*/
@@ -107,7 +89,8 @@ document.addEventListener('submit', (event) =>{
     setSpeed(1)
     goto(-400, -250 + HEIGHT);
 
-        /*I'm holding off on commenting this part until I complete the graph code*/
+        /*Draws out the posistion vectors one at a time, checking for negative values in order to rotate
+        the turtle object properly*/
         for (let index = 0; index < end; index++){
             right(90)
             forward(posistionX[index])
@@ -126,11 +109,7 @@ document.addEventListener('submit', (event) =>{
             
         }
 
-
-            
-        
-
-
+        /*I'm holding off on commenting this part until I complete the graph code*/
     for (let index = 0; index < end; index++){
         let value = posistionX[index] *20
         posistionListX.push(value)

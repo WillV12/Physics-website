@@ -19,6 +19,11 @@
         <div id="rightcolumn">
          <!--Form for inputs and calculation request-->
          <form>
+            <label for="color_selector">Select your the color of the trajectory:</label>
+            <input type="color" id="color_selector" value="#000000">
+            <input type="button" id="colorButton" value="Select">
+            <br>
+            <br>
             <label for="X">X Value:</label>
             <input type="number" id="X" value="0" max="5000">
             
@@ -29,7 +34,7 @@
             <input type="number" id="angle" value="0" max="90">
             <br>
             <label for="height">Height Value:</label>
-            <input type="number" id="height" value="0" max="5000">
+            <input type="number" id="height" value="0" max="500">
             <br>
             <br>
             <button type="submit" id="calculate">Calculate</button>
