@@ -5,6 +5,7 @@
 
 const reset = document.getElementById('reset')
 const colorButton = document.getElementById('colorButton')
+const dataview = document.getElementById('data')
 
 reset.addEventListener('click', (event) =>{
 
@@ -18,6 +19,9 @@ reset.addEventListener('click', (event) =>{
 colorButton.addEventListener('click', (event) =>{
     colors = document.getElementById('color_selector').value
     color(colors)
-    alert("Color has been set to "+ colors )
+    alert("Color has been set to " + colors )
 })
 
+
+
+    

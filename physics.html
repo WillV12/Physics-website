@@ -4,6 +4,7 @@
       <title>2-D Physics Simulator</title>
       <!--Window-->
       <link type="text/css" rel="stylesheet" href="lib/turtle.css" />
+      <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
       <meta charset="utf-8">
    </head>
    <body>
@@ -15,6 +16,8 @@
             <canvas id="turtlecanvas" width="800" height="500"></canvas>
             <canvas id="imagecanvas" width="800" height="500" style="display:none"></canvas>
             <span id="message" class="message-hide">Coordinates has been copied to clipboard</span>
+            <input type="button" id="data" value="data-view">
+            <div id="content"></div>
          </div> <!-- midcolumn -->
         <div id="rightcolumn">
          <!--Form for inputs and calculation request-->
@@ -42,6 +45,9 @@
             <hr>
             <br>
          </form> 
+         <br>
+         <div id="graph" style="width: 600px; height: 400px;">
+         </div>
         </div>
       </div> <!-- wrap-->
       <!--Imports of Javascript files and libraries-->
