@@ -8,12 +8,27 @@ const form = document.getElementById('form') // form for inputting the X, Y, HEI
 const button = document.getElementById('calculate') // button for calculation
 const output = document.getElementById('graph')
 const data = document.getElementById('data')
-
+const remove = document.getElementById('remove')
 let transition1
 let transition2
 let transition3
 let transition4
 
+let content = document.getElementById("content")
+
+let dataTable = document.createElement("ul")
+
+let data1 = document.createElement("li")
+data1.id = "data1"
+
+let data2 = document.createElement("li")
+data2.id = "data2"
+
+let data3 = document.createElement("li")
+data3.id = "data3"
+
+let data4 = document.createElement("li")
+data4.id = "data4"
 
 /* This function will check if a number is negative and return true or false */
 function neg_test(number){
@@ -101,7 +116,23 @@ document.addEventListener('submit', (event) =>{
 
         /*Draws out the posistion vectors one at a time, checking for negative values in order to rotate
         the turtle object properly*/
-        
+        for (let index = 0; index < end; index++){
+            right(90)
+            forward(posistionX[index])
+            left(90)
+            if (neg_test(posistionY[index]) == false){
+                forward(posistionY[index])
+            } 
+            else {
+                value = posistionY[index]
+                value *= -1
+                right(180)
+                forward(value)
+                left(180)
+            }
+             
+            
+        }
 
         /*I'm holding off on commenting this part until I complete the graph code*/
     for (let index = 0; index < end; index++){
@@ -137,22 +168,14 @@ document.addEventListener('submit', (event) =>{
         margin: { t: 0 } } );
         
     
-    transition1 = posistionListX
-    transition2 = posistionListY
-    transition3 = vectorListX
-    transition4 = vector_y
+    transition1 = `PositionListX: ${posistionListX}`
+    transition2 = `PositionListY: ${posistionListY}`
+    transition3 = `VectorListX: ${vectorListX}`
+    transition4 = `VectorListY: ${vector_y}`
 
-    console.log(transition1)
 });
 
 
-let content = document.getElementById("content")
-
-    let dataTable = document.createElement("ul")
-    let data1 = document.createElement("li")
-    let data2 = document.createElement("li")
-    let data3 = document.createElement("li")
-    let data4 = document.createElement("li")
 
 data.addEventListener("click", (event) =>{
     
@@ -161,21 +184,24 @@ data.addEventListener("click", (event) =>{
     content.appendChild(dataTable)
 
     dataTable.appendChild(data1)
-    data1.id = "data1"
     data1.textContent = transition1
 
     dataTable.appendChild(data2)
-    data2.id = "data2"
     data2.textContent = transition2
 
     dataTable.appendChild(data3)
-    data3.id = "data3"
     data3.textContent = transition3
 
     dataTable.appendChild(data4)
-    data4.id = "data4"
     data4.textContent = transition4
 
 
 
+})
+
+remove.addEventListener("click", (event) =>{
+    data1.textContent = `PositionListX:`
+    data2.textContent = `PositionListY:`
+    data3.textContent = `VectorListX:`
+    data4.textContent = `VectorListY:`
 })
